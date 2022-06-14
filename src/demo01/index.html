@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サンプル - スクロール制御した場合</title>
+  <link rel="stylesheet" href="../style/base.scss">
+  <link rel="stylesheet" href="../style/menu.scss">
+  <link rel="stylesheet" href="../style/modal.scss">
+</head>
+<body class="red">
+<div id="js-menu-header" class="header">
+  <div class="header_wrapper">
+    <a class="header_heading" href="#">LOGO</a>
+    <button id="js-menu-button" class="button button__red">メニューを開く</button>
+  </div>
+
+  <!-- 非表示のコンテンツ -->
+  <div id="js-menu-content" class="menu menu__red">
+    <ul class="menu_list">
+      <li class="menu_list_item">
+        <a href="#" class="menu_list_main">MENU 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#" class="menu_list_main">MENU 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#" class="menu_list_main">MENU 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#" class="menu_list_main">MENU 04</a>
+        <a href="#" class="menu_list_sub">サブメニュー 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#" class="menu_list_main">MENU 05</a>
+        <a href="#" class="menu_list_sub">サブメニュー 01</a>
+        <a href="#" class="menu_list_sub">サブメニュー 02</a>
+        <a href="#" class="menu_list_sub">サブメニュー 03</a>
+        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /非表示のコンテンツ -->
+</div>
+
+<div class="wrapper">
+  <h1>サンプル: </h1>
+  <button id="js-modal-button" class="button button__red">モーダルを開く</button>
+
+  <section>
+    <span class="dummyContent dummyContent__red"></span>
+  </section>
+</div>
+
+<div class="footer footer__red">
+  <p>ページ最下部</p>
+</div>
+
+<!-- 非表示のコンテンツ -->
+<div id="js-modal" class="modal">
+  <div id="js-modal-overlay" class="modal_overlay modal_overlay__red"></div>
+  <div class="modal_content">
+    <button id="js-modal-close" class="modal_close modal_close__red">閉じる</button>
+    <div class="modal_content_text">
+      <p>モーダルのコンテンツが入ります</p>
+      <br />
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+    </div>
+  </div>
+</div>
+<!-- /非表示のコンテンツ -->
+
+<script type="module" src="./main.ts"></script>
+</body>
+</html>
