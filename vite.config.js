@@ -2,7 +2,7 @@ const { resolve } = require("path");
 const { defineConfig } = require("vite");
 
 module.exports = defineConfig({
-  base: "/220613_fixed_scrolling",
+  base: "/220620_fixed_scrolling",
   build: {
     outDir: "docs",
     rollupOptions: {
