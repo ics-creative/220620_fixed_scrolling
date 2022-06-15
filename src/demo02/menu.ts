@@ -1,22 +1,24 @@
 import {dialog} from "./dialog";
 
-const header = document.querySelector<HTMLDivElement>('#js-menu-header')!
+const menuElement = document.querySelector<HTMLDivElement>('#js-menu')!
 const menuButton = document.querySelector<HTMLDivElement>('#js-menu-button')!
-const menu = dialog(header);
+const menu = dialog(menuElement);
 
 menuButton.addEventListener('click', () => {
-  const isShow = header.classList.contains('is-show-dialog');
+  const isShow = menuElement.classList.contains('is-show-dialog');
   if (!isShow) {
     menu.show(() => {
-      header.setAttribute('role', 'dialog');
-      header.setAttribute('aria-modal', 'true');
-      menuButton.textContent = "メニューを閉じる";
+      menuElement.setAttribute('role', 'dialog');
+      menuElement.setAttribute('aria-modal', 'true');
+      menuButton.classList.add("is-active");
+      menuButton.setAttribute('aria-label', 'メニューを閉じる');
     });
   } else {
     menu.close(() => {
-      header.removeAttribute('role');
-      header.removeAttribute('aria-modal');
-      menuButton.textContent = "メニューを開く";
+      menuElement.removeAttribute('role');
+      menuElement.removeAttribute('aria-modal');
+      menuButton.classList.remove("is-active");
+      menuButton.setAttribute('aria-label', 'メニューを開く');
     });
   }
 })

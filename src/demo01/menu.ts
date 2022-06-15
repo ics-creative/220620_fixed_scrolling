@@ -9,11 +9,11 @@ menuButton.addEventListener('click', () => {
 
   if (!isShow) {
     menu.show(() => {
-      menuButton.textContent = "メニューを閉じる";
+      menuButton.classList.add("is-active");
     })
   } else {
     menu.close(() => {
-      menuButton.textContent = "メニューを開く";
+      menuButton.classList.remove("is-active");
     })
   }
 })
