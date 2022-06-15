@@ -1,4 +1,4 @@
-import "./menu.js";
+import "./base.js";
 /* empty css       */const INTERACTIVE_SELECTOR = "button, a";
 const createInteractiveElArray = (element) => {
   const elements = element.querySelectorAll(INTERACTIVE_SELECTOR);
@@ -67,7 +67,6 @@ const scrollLock = (event) => {
   if (element === null) {
     return;
   }
-  console.log(element.scrollTop);
   if (element.scrollTop + element.clientHeight === element.scrollHeight) {
     element.scrollTop = element.scrollTop - 1;
   }

@@ -9,23 +9,25 @@
   
   
   <script type="module" crossorigin src="/220620_fixed_scrolling/assets/js/demo01.js"></script>
-  <link rel="modulepreload" href="/220620_fixed_scrolling/assets/js/menu.js">
-  <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/menu.css">
+  <link rel="modulepreload" href="/220620_fixed_scrolling/assets/js/base.js">
+  <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/base.css">
   <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/modal.css">
 </head>
 <body class="red">
 <div id="js-menu-header" class="header">
   <div class="header_wrapper">
     <a class="header_heading" href="#">LOGO</a>
-    <button id="js-menu-button" class="header_button header_button__red" aria-label="メニューを開く">
-      <span class="header_button_line"></span>
-      <span class="header_button_line"></span>
-      <span class="header_button_line"></span>
-    </button>
   </div>
+</div>
 
+<div id="js-menu" class="menu">
+  <button id="js-menu-button" class="menu_button menu_button__red" aria-label="メニューを開く">
+    <span class="menu_button_line"></span>
+    <span class="menu_button_line"></span>
+    <span class="menu_button_line"></span>
+  </button>
   <!-- 非表示のコンテンツ -->
-  <div id="js-menu-content" class="menu menu__red">
+  <div id="js-menu-content" class="menu_content">
     <ul class="menu_list">
       <li class="menu_list_item">
         <a href="#">HOME</a>
@@ -53,8 +55,9 @@
   <!-- /非表示のコンテンツ -->
 </div>
 
+
 <div class="wrapper">
-  <h1>DEMO_01: overflow: hidden; のみ設定した場合</h1>
+  <h1>DEMO_01:overflow: hidden; のみ設定した場合</h1>
   <button id="js-modal-button" class="button button__red">モーダルを開く</button>
 
   <section class="dummySection">
@@ -104,12 +107,25 @@
 <div id="js-modal" class="modal">
   <div id="js-modal-overlay" class="modal_overlay modal_overlay__red"></div>
   <div class="modal_content">
-    <button id="js-modal-close" class="modal_close modal_close__red">閉じる</button>
+    <button id="js-modal-close" class="modal_close" aria-label="閉じる">❌</button>
     <div class="modal_content_text">
-      <p>モーダルのコンテンツが入ります</p>
-      <br />
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p class="dummyText dummyText__red dummyText__verticalLarge"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red dummyText__narrow"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red"></p>
+      <p class="dummyText dummyText__red dummyText__narrow"></p>
     </div>
   </div>
 </div>

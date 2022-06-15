@@ -1,4 +1,4 @@
-import "./menu.js";
+import "./base.js";
 /* empty css       */const CSS_SHOW_DIALOG = "is-show-dialog";
 const CSS_SCROLL_LOCK = "is-fixed-scroll";
 const dialog = (element) => {
@@ -23,11 +23,11 @@ const dialog = (element) => {
     close
   };
 };
-const header = document.querySelector("#js-menu-header");
+const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
-const menu = dialog(header);
+const menu = dialog(menuElement);
 menuButton.addEventListener("click", () => {
-  const isShow = header.classList.contains("is-show-dialog");
+  const isShow = menuElement.classList.contains("is-show-dialog");
   if (!isShow) {
     menu.show(() => {
       menuButton.classList.add("is-active");

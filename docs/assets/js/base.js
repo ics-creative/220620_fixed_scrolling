@@ -41,4 +41,3 @@ const p = function polyfill() {
 };
 p();
 var base = "";
-var menu = "";

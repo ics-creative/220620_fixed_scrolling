@@ -7,10 +7,9 @@
   <title>DEMO_03: &lt;dialog&gt;の例（モーダルのみ）</title>
   
   
-  
   <script type="module" crossorigin src="/220620_fixed_scrolling/assets/js/demo03.js"></script>
-  <link rel="modulepreload" href="/220620_fixed_scrolling/assets/js/menu.js">
-  <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/menu.css">
+  <link rel="modulepreload" href="/220620_fixed_scrolling/assets/js/base.js">
+  <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/base.css">
   <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/demo03.css">
 </head>
 <body>
@@ -68,13 +67,26 @@
 </div>
 
 <!-- 非表示のコンテンツ -->
-<dialog id="js-dialog" class="dialog">
-  <button id="js-dialog-close" class="dialog_close" value="close">&lt;dialog&gt;を閉じる</button>
+<dialog id="js-dialog" class="dialog is-can-scroll">
   <div>
-    <p>&lt;dialog&gt;のコンテンツが入ります</p>
-    <br />
-    <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-    <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <button id="js-dialog-close" class="button" value="close">&lt;dialog&gt;を閉じる</button>
   </div>
 </dialog>
 <!-- /非表示のコンテンツ -->
