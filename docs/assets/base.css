@@ -17,16 +17,21 @@ li {
 }
 
 h1 {
-  margin-bottom: 24px;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 body {
-  padding: 128px 0 0;
+  padding: 136px 0 0;
   margin: 0;
   font-family: sans-serif;
   color: #333;
   background: #bec7d0;
-  touch-action: manipulation;
 }
 body.is-fixed-scroll {
   overflow: hidden;
@@ -48,8 +53,8 @@ body.red {
 .header {
   position: fixed;
   top: 24px;
-  left: 24px;
-  width: calc(100% - 48px);
+  left: 20px;
+  width: calc(100% - 40px);
   height: 80px;
   z-index: 100;
 }
@@ -65,7 +70,7 @@ body.red {
   position: relative;
 }
 .header_heading {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -77,14 +82,18 @@ body.red {
 .footer__red {
   background-color: #502c2c;
 }
+.footer a {
+  text-decoration: underline;
+}
 
 .button {
+  font-weight: bold;
   cursor: pointer;
   background: #5081b1;
   color: #fff;
   padding: 16px;
   width: 200px;
-  border-radius: 8px;
+  border-radius: 50px;
   position: relative;
   border: 0;
   font-size: 18px;
@@ -98,10 +107,11 @@ body.red {
   height: 15px;
   margin-bottom: 8px;
   display: block;
-  background: #6a7683;
+  background: #a1b3be;
+  border-radius: 3px;
 }
 .dummyText__red {
-  background: #836a6a;
+  background: #bea1a1;
 }
 .dummyText__verticalLarge {
   width: 60%;

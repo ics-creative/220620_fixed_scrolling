@@ -12,5 +12,4 @@ dialogOpenButton.addEventListener("click", () => {
 });
 dialogCloseButton.addEventListener("click", () => {
   dialogElement.close();
-  alert("dialog\u8981\u7D20\u3092\u9589\u3058\u307E\u3057\u305F");
 });
