@@ -1,11 +1,11 @@
 import {dialog} from "./dialog";
 
-const header = document.querySelector<HTMLDivElement>('#js-menu-header')!
+const menuElement = document.querySelector<HTMLDivElement>('#js-menu')!
 const menuButton = document.querySelector<HTMLDivElement>('#js-menu-button')!
-const menu = dialog(header);
+const menu = dialog(menuElement);
 
 menuButton.addEventListener('click', () => {
-  const isShow = header.classList.contains('is-show-dialog');
+  const isShow = menuElement.classList.contains('is-show-dialog');
 
   if (!isShow) {
     menu.show(() => {

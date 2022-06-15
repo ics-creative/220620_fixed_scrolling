@@ -33,9 +33,11 @@
   }
   &_close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background-color: #5081b1;
+    top: -40px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
     border: 0;
     color: #fff;
     padding: 4px;

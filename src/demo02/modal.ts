@@ -1,5 +1,5 @@
 // modal
-import {dialog} from "./dialog";
+import {dialog} from "./dialog/dialog";
 
 const modalOpenButton = document.querySelector<HTMLDivElement>('#js-modal-button')!
 const modalCloseButton = document.querySelector<HTMLDivElement>('#js-modal-close')!

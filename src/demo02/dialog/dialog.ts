@@ -15,7 +15,6 @@ export const dialog = (element: HTMLElement) => {
     // キーボードフォーカスの制御を破棄
     window.removeEventListener('keydown', focusHandler, {capture: true});
     // スクロール固定のイベントを破棄
-    // element.removeEventListener('scroll', dialogScrollLock);
     document.removeEventListener('touchmove', windowLock)
   }
 
@@ -30,7 +29,6 @@ export const dialog = (element: HTMLElement) => {
     window.addEventListener('keydown', focusHandler, {capture: true});
     // スクロール固定のイベントを登録
     dialogScrollLock(element);
-    // element.addEventListener('touchmove', dialogScrollLock);
     document.addEventListener('touchmove', windowLock, {passive: false})
     // 追加のイベント
     if (onShow) {

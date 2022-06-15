@@ -15,16 +15,4 @@
   &::backdrop {
     background-color: rgba(43, 62, 80, 0.64);
   }
-
-  &_close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background-color: #5081b1;
-    border: 0;
-    color: #fff;
-    padding: 4px;
-    border-radius: 4px;
-    font-size: 12px;
-  }
 }

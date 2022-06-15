@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DEMO_03: &lt;dialog&gt;の例（モーダルのみ）</title>
   <link rel="stylesheet" href="../style/base.scss">
-  <link rel="stylesheet" href="../style/menu.scss">
-  <link rel="stylesheet" href="./dialog.scss">
+  <link rel="stylesheet" href="demo03.scss">
 </head>
 <body>
 <div id="js-menu-header" class="header">
@@ -64,13 +63,26 @@
 </div>
 
 <!-- 非表示のコンテンツ -->
-<dialog id="js-dialog" class="dialog">
-  <button id="js-dialog-close" class="dialog_close" value="close">&lt;dialog&gt;を閉じる</button>
+<dialog id="js-dialog" class="dialog is-can-scroll">
   <div>
-    <p>&lt;dialog&gt;のコンテンツが入ります</p>
-    <br />
-    <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-    <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <button id="js-dialog-close" class="button" value="close">&lt;dialog&gt;を閉じる</button>
   </div>
 </dialog>
 <!-- /非表示のコンテンツ -->

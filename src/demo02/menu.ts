@@ -1,4 +1,4 @@
-import {dialog} from "./dialog";
+import {dialog} from "./dialog/dialog";
 
 const menuElement = document.querySelector<HTMLDivElement>('#js-menu')!
 const menuButton = document.querySelector<HTMLDivElement>('#js-menu-button')!

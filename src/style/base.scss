@@ -30,13 +30,6 @@ body {
   &.is-fixed-scroll {
     overflow: hidden;
   }
-  &.is-fix-scroll {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    position: fixed;
-    left: 0;
-  }
   &.red {
     background: #d0bebe;
   }
@@ -92,6 +85,7 @@ body {
   border-radius: 8px;
   position: relative;
   border: 0;
+  font-size: 18px;
   &__red {
     background: #b15050;
   }
