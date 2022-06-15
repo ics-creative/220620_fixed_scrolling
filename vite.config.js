@@ -6,6 +6,7 @@ module.exports = defineConfig({
   root: "src",
   build: {
     outDir: "../docs",
+    minify: false,
     emptyOutDir: true,
     rollupOptions: {
       input: {
@@ -14,6 +15,13 @@ module.exports = defineConfig({
         demo02: resolve(__dirname, "./src/demo02/index.html"),
         demo03: resolve(__dirname, "./src/demo03/index.html"),
       },
+      output: {
+        // JSの出力先
+        entryFileNames: `assets/js/[name].js`,
+        chunkFileNames: `assets/js/[name].js`,
+        // CSSの出力先
+        assetFileNames: `assets/css/[name].[ext]`,
+      }
     },
   },
 });
