@@ -24,7 +24,7 @@ body {
   padding: 128px 0 0;
   margin: 0;
   font-family: sans-serif;
-  color: #2c3e50;
+  color: #333;
   background: #bec7d0;
   touch-action: manipulation;
   &.is-fixed-scroll {
@@ -38,7 +38,6 @@ body {
     left: 0;
   }
   &.red {
-    color: #502c2c;
     background: #d0bebe;
   }
 }
@@ -88,7 +87,8 @@ body {
 .button {
   background: #5081b1;
   color: #fff;
-  padding: 8px;
+  padding: 16px;
+  width: 200px;
   border-radius: 8px;
   position: relative;
   border: 0;

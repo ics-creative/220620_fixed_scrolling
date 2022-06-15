@@ -35,7 +35,6 @@ const focusToButton = (parentElement: HTMLElement, isFirstFocus = true) => {
  * @param onEscape escapeキー押下時のイベント
  */
 export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElement, onEscape?: (() => void)) => {
-  console.log("dialogFocusHandler");
   if (!parentElement) {
     return;
   }
