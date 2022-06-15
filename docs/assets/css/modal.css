@@ -13,6 +13,7 @@
   border-radius: 4px;
   z-index: 102;
   background-color: #5081b1;
+  cursor: pointer;
 }
 .menu_button__red {
   background-color: #b15050;
@@ -123,6 +124,7 @@
   padding: 4px;
   border-radius: 4px;
   font-size: 12px;
+  cursor: pointer;
 }
 .modal_close__red {
   background-color: #b15050;

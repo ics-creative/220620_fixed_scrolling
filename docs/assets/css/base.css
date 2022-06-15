@@ -79,6 +79,7 @@ body.red {
 }
 
 .button {
+  cursor: pointer;
   background: #5081b1;
   color: #fff;
   padding: 16px;

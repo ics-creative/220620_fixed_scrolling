@@ -2,18 +2,18 @@ const { resolve } = require("path");
 const { defineConfig } = require("vite");
 
 module.exports = defineConfig({
-  base: "/220620_fixed_scrolling",
-  root: "src",
+  base: "./",
+
   build: {
-    outDir: "../docs",
+    outDir: "docs",
     minify: false,
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        top: resolve(__dirname, "./src/index.html"),
-        demo01: resolve(__dirname, "./src/demo01/index.html"),
-        demo02: resolve(__dirname, "./src/demo02/index.html"),
-        demo03: resolve(__dirname, "./src/demo03/index.html"),
+        top: resolve(__dirname, "./index.html"),
+        demo01: resolve(__dirname, "./demo01.html"),
+        demo02: resolve(__dirname, "./demo02.html"),
+        demo03: resolve(__dirname, "./demo03.html"),
       },
       output: {
         // JSの出力先
