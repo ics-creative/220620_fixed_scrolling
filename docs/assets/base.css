@@ -82,7 +82,18 @@ body.red {
 .footer__red {
   background-color: #502c2c;
 }
-.footer a {
+.footer_link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer_link_item {
+  margin-right: 20px;
+}
+.footer_link_item:last-child {
+  margin-right: 0;
+}
+.footer_link a {
   text-decoration: underline;
 }
 
