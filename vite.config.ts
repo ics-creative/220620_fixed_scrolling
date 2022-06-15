@@ -1,9 +1,8 @@
-const { resolve } = require("path");
-const { defineConfig } = require("vite");
+import {resolve} from "path";
+import {defineConfig} from "vite";
 
-module.exports = defineConfig({
+export default defineConfig({
   base: "./",
-
   build: {
     outDir: "docs",
     minify: false,
@@ -17,10 +16,10 @@ module.exports = defineConfig({
       },
       output: {
         // JSの出力先
-        entryFileNames: `assets/js/[name].js`,
-        chunkFileNames: `assets/js/[name].js`,
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
         // CSSの出力先
-        assetFileNames: `assets/css/[name].[ext]`,
+        assetFileNames: `assets/[name].[ext]`,
       }
     },
   },
