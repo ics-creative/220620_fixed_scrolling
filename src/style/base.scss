@@ -80,8 +80,19 @@ body {
   &__red {
     background-color: #502c2c;
   }
-  a {
-    text-decoration: underline;
+  &_link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &_item {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    a {
+      text-decoration: underline;
+    }
   }
 }
 
