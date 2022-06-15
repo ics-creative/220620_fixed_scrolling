@@ -3,8 +3,10 @@ const { defineConfig } = require("vite");
 
 module.exports = defineConfig({
   base: "/220620_fixed_scrolling",
+  root: "src",
   build: {
-    outDir: "docs",
+    outDir: "../docs",
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         top: resolve(__dirname, "./src/index.html"),
