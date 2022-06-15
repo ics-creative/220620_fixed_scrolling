@@ -22,6 +22,7 @@ body {
   font-family: sans-serif;
   color: #2c3e50;
   background: #bec7d0;
+  touch-action: manipulation;
   &.is-fixed-scroll {
     overflow: hidden;
   }
