@@ -12,5 +12,4 @@ dialogOpenButton.addEventListener('click', () => {
 
 dialogCloseButton.addEventListener('click', () => {
   dialogElement.close();
-  alert('dialog要素を閉じました')
 });

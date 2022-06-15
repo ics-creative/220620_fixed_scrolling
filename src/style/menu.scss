@@ -1,15 +1,15 @@
 .menu {
   overflow: auto;
   &_button {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border: 0;
     position: fixed;
-    top: 43px;
+    top: 39px;
     right: 48px;
     display: block;
     padding: 8px 4px;
-    border-radius: 4px;
+    border-radius: 50%;
     z-index: 102;
     background-color: #5081b1;
     cursor: pointer;
@@ -22,15 +22,15 @@
       height: 4px;
       background-color: #fff;
       position: absolute;
-      left: 8px;
+      left: 12px;
       &:nth-child(1) {
-        top: 10px;
+        top: 14px;
       }
       &:nth-child(2) {
-        top: 18px;
+        top: 22px;
       }
       &:nth-child(3) {
-        bottom: 10px;
+        bottom: 14px;
       }
     }
     &.is-active &_line {
