@@ -15,10 +15,7 @@
 .modal_overlay {
   width: 100%;
   height: 100%;
-  background-color: rgba(43, 62, 80, 0.64);
-}
-.modal_overlay__red {
-  background-color: rgba(80, 43, 43, 0.64);
+  background-color: rgba(35, 35, 35, 0.8);
 }
 .modal_wrapper {
   position: fixed;

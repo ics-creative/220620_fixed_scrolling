@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/220620_fixed_scrolling/assets/css/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DEMO_02: スクロール制御と、キーボードフォーカスを制御した場合</title>
   
@@ -14,49 +14,41 @@
   <link rel="stylesheet" href="/220620_fixed_scrolling/assets/css/modal.css">
 </head>
 <body>
-<div id="js-menu-header" class="header is-can-scroll">
+<div class="header">
   <div class="header_wrapper">
     <a class="header_heading" href="#">LOGO</a>
-    <button id="js-menu-button" class="button">メニューを開く</button>
   </div>
+</div>
 
+<div id="js-menu" class="is-can-scroll">
+  <button id="js-menu-button" class="menuButton" aria-label="メニューを開く">
+    <span class="menuButton_line"></span>
+    <span class="menuButton_line"></span>
+    <span class="menuButton_line"></span>
+  </button>
   <!-- 非表示のコンテンツ -->
-  <div id="js-menu-content" class="menu is-can-scroll">
+  <div id="js-menu-content" class="menu">
     <ul class="menu_list">
       <li class="menu_list_item">
-        <a href="#" class="menu_list_main">MENU 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+        <a href="#">HOME</a>
       </li>
       <li class="menu_list_item">
-        <a href="#" class="menu_list_main">MENU 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+        <a href="#">ABOUT</a>
       </li>
       <li class="menu_list_item">
-        <a href="#" class="menu_list_main">MENU 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+        <a href="#">WORKS</a>
       </li>
       <li class="menu_list_item">
-        <a href="#" class="menu_list_main">MENU 04</a>
-        <a href="#" class="menu_list_sub">サブメニュー 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+        <a href="#">NEWS</a>
       </li>
       <li class="menu_list_item">
-        <a href="#" class="menu_list_main">MENU 05</a>
-        <a href="#" class="menu_list_sub">サブメニュー 01</a>
-        <a href="#" class="menu_list_sub">サブメニュー 02</a>
-        <a href="#" class="menu_list_sub">サブメニュー 03</a>
-        <a href="#" class="menu_list_sub">サブメニュー 04</a>
+        <a href="#">RECRUIT</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#">PRIVACY POLICY</a>
+      </li>
+      <li class="menu_list_item">
+        <a href="#">CONTACT</a>
       </li>
     </ul>
   </div>
@@ -67,13 +59,47 @@
   <h1>DEMO_02: スクロール制御と、キーボードフォーカスを制御した場合</h1>
   <button id="js-modal-button" class="button">モーダルを開く</button>
 
-  <section>
-    <span class="dummyContent"></span>
+  <section class="dummySection">
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
+    <p class="dummyText dummyText__verticalLarge"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText"></p>
+    <p class="dummyText dummyText__narrow"></p>
   </section>
 </div>
 
 <div class="footer">
-  <p>ページ最下部</p>
+  <a href="#">ページ上部へ移動</a>
 </div>
 
 <!-- 非表示のコンテンツ -->
@@ -82,10 +108,23 @@
   <div class="modal_content">
     <button id="js-modal-close" class="modal_close">閉じる</button>
     <div class="modal_content_text is-can-scroll">
-      <p>モーダルのコンテンツが入ります</p>
-      <br />
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-      <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      <p class="dummyText dummyText__verticalLarge"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText dummyText__narrow"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText"></p>
+      <p class="dummyText dummyText__narrow"></p>
     </div>
   </div>
 </div>

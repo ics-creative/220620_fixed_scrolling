@@ -17,7 +17,6 @@ const focusToButton = (parentElement, isFirstFocus) => {
   focusableArray[0].focus();
 };
 const dialogFocusHandler = (event, parentElement, onEscape) => {
-  console.log("dialogFocusHandler");
   if (!parentElement) {
     return;
   }
@@ -135,22 +134,24 @@ const dialog = (element) => {
     close
   };
 };
-const header = document.querySelector("#js-menu-header");
+const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
-const menu = dialog(header);
+const menu = dialog(menuElement);
 menuButton.addEventListener("click", () => {
-  const isShow = header.classList.contains("is-show-dialog");
+  const isShow = menuElement.classList.contains("is-show-dialog");
   if (!isShow) {
     menu.show(() => {
-      header.setAttribute("role", "dialog");
-      header.setAttribute("aria-modal", "true");
-      menuButton.textContent = "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B";
+      menuElement.setAttribute("role", "dialog");
+      menuElement.setAttribute("aria-modal", "true");
+      menuButton.classList.add("is-active");
+      menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B");
     });
   } else {
     menu.close(() => {
-      header.removeAttribute("role");
-      header.removeAttribute("aria-modal");
-      menuButton.textContent = "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F";
+      menuElement.removeAttribute("role");
+      menuElement.removeAttribute("aria-modal");
+      menuButton.classList.remove("is-active");
+      menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F");
     });
   }
 });

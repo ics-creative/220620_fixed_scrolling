@@ -30,11 +30,11 @@ menuButton.addEventListener("click", () => {
   const isShow = header.classList.contains("is-show-dialog");
   if (!isShow) {
     menu.show(() => {
-      menuButton.textContent = "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B";
+      menuButton.classList.add("is-active");
     });
   } else {
     menu.close(() => {
-      menuButton.textContent = "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F";
+      menuButton.classList.remove("is-active");
     });
   }
 });
