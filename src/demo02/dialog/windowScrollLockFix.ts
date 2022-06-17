@@ -5,7 +5,7 @@ const scrollLock = (event: Event) => {
   if (element === null) {
     return;
   }
-  // 以下の手順で発生するスクロールのバグ対策。回避するため1pxだけ上にズラす
+  // 以下の手順で発生するスクロールのバグ対策。回避するため1pxだけスクロール量を減らす
   // 1. メニューを上下どちらかに最大までスクロールする
   // 2. 更にスクロールを行うとページ全体がスクロールする
   if (element.scrollTop + element.clientHeight === element.scrollHeight) {
@@ -17,9 +17,9 @@ const scrollLock = (event: Event) => {
 }
 
 /**
- * スクロール固定のイベント
+ * スクロールのバグ対策を行う関数です。
  */
-export const dialogScrollLock = (element: HTMLElement) => {
+export const windowScrollLockFix = (element: HTMLElement) => {
   const canScrollElement = element.querySelector(`.${CSS_CAN_SCROLL}`);
   if (canScrollElement === null) {
     return;

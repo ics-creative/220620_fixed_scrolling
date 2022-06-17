@@ -1,6 +1,6 @@
 import {dialogFocusHandler} from "./dialogFocusHandler";
-import {dialogScrollLock} from "./dialogScrollLock";
-import {windowLock} from "./windowLock";
+import {windowScrollLockFix} from "./windowScrollLockFix";
+import {windowScrollLock} from "./windowScrollLock";
 
 const CSS_SHOW_DIALOG = 'is-show-dialog';
 const CSS_SCROLL_LOCK = 'is-fixed-scroll';
@@ -15,7 +15,7 @@ export const dialog = (element: HTMLElement) => {
     // キーボードフォーカスの制御を破棄
     window.removeEventListener('keydown', focusHandler, {capture: true});
     // スクロール固定のイベントを破棄
-    document.removeEventListener('touchmove', windowLock)
+    document.removeEventListener('touchmove', windowScrollLock)
   }
 
   const focusHandler = (event: KeyboardEvent) => dialogFocusHandler(event, element, () => closeHandler(element));
@@ -28,8 +28,8 @@ export const dialog = (element: HTMLElement) => {
     // キーボードフォーカスの制御イベントを登録
     window.addEventListener('keydown', focusHandler, {capture: true});
     // スクロール固定のイベントを登録
-    dialogScrollLock(element);
-    document.addEventListener('touchmove', windowLock, {passive: false})
+    windowScrollLockFix(element);
+    document.addEventListener('touchmove', windowScrollLock, {passive: false})
     // 追加のイベント
     if (onShow) {
       onShow();

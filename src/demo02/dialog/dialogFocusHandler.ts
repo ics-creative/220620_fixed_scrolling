@@ -55,8 +55,7 @@ export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElem
       );
 
       if (interactiveElArray.length === 1) {
-        // フォーカス可能な要素が1つしかない場合、その要素にフォーカスし続ける
-        console.log("フォーカス可能な要素が1つしかない場合、その要素にフォーカスし続ける");
+        console.log("フォーカス可能な要素が1つしかない場合、その要素のみフォーカス");
         event.preventDefault();
         event.stopImmediatePropagation();
         focusToButton(parentElement, true);
@@ -65,8 +64,6 @@ export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElem
 
       if (focusIndex === 0) {
         if (event.shiftKey) {
-          // モーダル画面以外にフォーカスが当たっていたら
-          // イベントを無効化
           console.log("モーダル画面以外にフォーカスが当たっていたらイベントを無効化")
           event.preventDefault();
           event.stopImmediatePropagation();
@@ -76,8 +73,6 @@ export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElem
       } else if (focusIndex >= interactiveElArray.length - 1) {
         // 最後の要素にふれていたら1番目の要素にフォーカスをあてる
         if (!event.shiftKey) {
-          // モーダル画面以外にフォーカスが当たっていたら
-          // イベントを無効化
           console.log("最後の要素にふれていたら1番目の要素にフォーカスをあてる")
           event.preventDefault();
           event.stopImmediatePropagation();
@@ -85,9 +80,7 @@ export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElem
           focusToButton(parentElement, true);
         }
       } else if (focusIndex === -1) {
-        // もし画面外の要素にフォーカスがあたっていたら
-        // 1番目の要素にフォーカスをあてる
-        console.log("もし画面外の要素にフォーカスがあたっていたら1番目の要素にフォーカスをあてる")
+        console.log("画面外の要素にフォーカスがあたっていたら1番目の要素にフォーカスをあてる")
         focusToButton(parentElement, true);
       }
       break;
