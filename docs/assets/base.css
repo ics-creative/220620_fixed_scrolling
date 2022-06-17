@@ -46,10 +46,6 @@ body.red {
   padding: 0 24px;
 }
 
-.dummySection {
-  margin-top: 56px;
-}
-
 .header {
   position: fixed;
   top: 24px;
@@ -111,6 +107,11 @@ body.red {
 }
 .button__red {
   background: #b15050;
+}
+
+.dummySection {
+  margin-top: 56px;
+  min-height: 130vh;
 }
 
 .dummyText {

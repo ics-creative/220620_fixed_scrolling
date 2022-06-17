@@ -33,7 +33,7 @@ const dialogFocusHandler = (event, parentElement, onEscape) => {
       const interactiveElArray = createInteractiveElArray(parentElement);
       const focusIndex = interactiveElArray.findIndex((el) => el === document.activeElement);
       if (interactiveElArray.length === 1) {
-        console.log("\u30D5\u30A9\u30FC\u30AB\u30B9\u53EF\u80FD\u306A\u8981\u7D20\u304C1\u3064\u3057\u304B\u306A\u3044\u5834\u5408\u3001\u305D\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u3057\u7D9A\u3051\u308B");
+        console.log("\u30D5\u30A9\u30FC\u30AB\u30B9\u53EF\u80FD\u306A\u8981\u7D20\u304C1\u3064\u3057\u304B\u306A\u3044\u5834\u5408\u3001\u305D\u306E\u8981\u7D20\u306E\u307F\u30D5\u30A9\u30FC\u30AB\u30B9");
         event.preventDefault();
         event.stopImmediatePropagation();
         focusToButton(parentElement, true);
@@ -54,7 +54,7 @@ const dialogFocusHandler = (event, parentElement, onEscape) => {
           focusToButton(parentElement, true);
         }
       } else if (focusIndex === -1) {
-        console.log("\u3082\u3057\u753B\u9762\u5916\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u305F\u3063\u3066\u3044\u305F\u30891\u756A\u76EE\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u3042\u3066\u308B");
+        console.log("\u753B\u9762\u5916\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u305F\u3063\u3066\u3044\u305F\u30891\u756A\u76EE\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u3042\u3066\u308B");
         focusToButton(parentElement, true);
       }
       break;
@@ -74,7 +74,7 @@ const scrollLock = (event) => {
     element.scrollTop = 1;
   }
 };
-const dialogScrollLock = (element) => {
+const windowScrollLockFix = (element) => {
   const canScrollElement = element.querySelector(`.${CSS_CAN_SCROLL}`);
   if (canScrollElement === null) {
     return;
@@ -84,14 +84,14 @@ const dialogScrollLock = (element) => {
   }
 };
 const isScrollable = (element) => element.clientHeight < element.scrollHeight;
-const windowLock = (event) => {
+const windowScrollLock = (event) => {
   var _a;
   const canScrollElement = (_a = event.target) == null ? void 0 : _a.closest(`.${CSS_CAN_SCROLL}`);
   if (canScrollElement === null) {
+    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u3001\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
     event.preventDefault();
     return;
   }
-  console.log(canScrollElement.clientHeight, canScrollElement.scrollHeight);
   if (canScrollElement && isScrollable(canScrollElement)) {
     console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u3001\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
     event.stopPropagation();
@@ -107,7 +107,7 @@ const dialog = (element) => {
     element2.classList.remove(CSS_SHOW_DIALOG);
     document.body.classList.remove(CSS_SCROLL_LOCK);
     window.removeEventListener("keydown", focusHandler, { capture: true });
-    document.removeEventListener("touchmove", windowLock);
+    document.removeEventListener("touchmove", windowScrollLock);
   };
   const focusHandler = (event) => dialogFocusHandler(event, element, () => closeHandler(element));
   const show = (onShow) => {
@@ -115,8 +115,8 @@ const dialog = (element) => {
     element.classList.add(CSS_SHOW_DIALOG);
     document.body.classList.add(CSS_SCROLL_LOCK);
     window.addEventListener("keydown", focusHandler, { capture: true });
-    dialogScrollLock(element);
-    document.addEventListener("touchmove", windowLock, { passive: false });
+    windowScrollLockFix(element);
+    document.addEventListener("touchmove", windowScrollLock, { passive: false });
     if (onShow) {
       onShow();
     }
