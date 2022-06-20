@@ -25,6 +25,6 @@ export const windowScrollLockFix = (element: HTMLElement) => {
     return;
   }
   if (canScrollElement) {
-    canScrollElement.addEventListener('scroll', scrollLock);
+    canScrollElement.addEventListener('touchmove', scrollLock);
   }
 }

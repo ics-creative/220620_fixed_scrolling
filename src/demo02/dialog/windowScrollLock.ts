@@ -11,13 +11,13 @@ export const windowScrollLock = (event: TouchEvent) => {
     `.${CSS_CAN_SCROLL}`
   );
   if (canScrollElement === null) {
-    console.log('対象の要素があり、その要素がスクロール可能であれば、スクロールを許可する');
+    console.log('対象の要素でなければスクロール禁止');
     event.preventDefault();
     return;
   }
 
   if (canScrollElement && isScrollable(canScrollElement)) {
-    console.log('対象の要素があり、その要素がスクロール可能であれば、スクロールを許可する');
+    console.log('対象の要素があり、その要素がスクロール可能であればスクロールを許可する');
     event.stopPropagation();
   } else {
     console.log('対象の要素はスクロール禁止');
