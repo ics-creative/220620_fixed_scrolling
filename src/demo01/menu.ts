@@ -1,19 +1,18 @@
-import {dialog} from "./dialog";
-
 const menuElement = document.querySelector<HTMLDivElement>('#js-menu')!
-const menuButton = document.querySelector<HTMLDivElement>('#js-menu-button')!
-const menu = dialog(menuElement);
+const menuButton = document.querySelector<HTMLButtonElement>('#js-menu-button')!
 
 menuButton.addEventListener('click', () => {
-  const isShow = menuElement.classList.contains('is-show-dialog');
-
+  const isShow = menuElement.classList.contains('is-show');
+  // モーダルが表示されていないか？
   if (!isShow) {
-    menu.show(() => {
-      menuButton.classList.add("is-active");
-    })
+    console.log('モーダルを表示')
+    menuButton.classList.add("is-active");
+    menuElement.classList.add('is-show');
+    document.body.classList.add('is-scrollLock');
   } else {
-    menu.close(() => {
-      menuButton.classList.remove("is-active");
-    })
+    console.log('モーダルを非表示')
+    menuButton.classList.remove("is-active");
+    menuElement.classList.remove('is-show');
+    document.body.classList.remove('is-scrollLock');
   }
 })

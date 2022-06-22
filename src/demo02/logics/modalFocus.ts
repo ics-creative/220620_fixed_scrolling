@@ -22,19 +22,18 @@ const focusToButton = (parentElement: HTMLElement, isFirstFocus = true) => {
   const focusableArray = createInteractiveElArray(parentElement);
 
   if (focusableArray.length > 0) {
-    console.log(focusableArray[isFirstFocus ? 0 : focusableArray.length - 1])
     focusableArray[isFirstFocus ? 0 : focusableArray.length - 1].focus();
   }
   focusableArray[0].focus();
 };
 
 /**
- * キーボードフォーカスを制御するイベントです。
+ * モーダルのキーボードフォーカスを制御するイベントです。
  * @param event
  * @param parentElement 対象の親要素
- * @param onEscape escapeキー押下時のイベント
+ * @param onClose モーダルを閉じる処理
  */
-export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElement, onEscape?: (() => void)) => {
+export const modalFocus = (event: KeyboardEvent, parentElement: HTMLElement, onClose: (() => void)) => {
   if (!parentElement) {
     return;
   }
@@ -43,9 +42,7 @@ export const dialogFocusHandler = (event: KeyboardEvent, parentElement: HTMLElem
     case 'Space':
       break;
     case 'Escape':
-      if (onEscape) {
-        onEscape();
-      }
+      onClose();
       break;
     case 'Tab': {
       // モーダル画面内にフォーカスが当たっているか検証

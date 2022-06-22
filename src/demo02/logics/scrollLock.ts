@@ -6,7 +6,7 @@ const isScrollable = (element: Element) => element.clientHeight < element.scroll
 /**
  * 指定した要素以外のスクロールを抑止します。
  */
-export const windowScrollLock = (event: TouchEvent) => {
+export const scrollLock = (event: TouchEvent) => {
   const canScrollElement = (event.target as HTMLElement)?.closest(
     `.${CSS_CAN_SCROLL}`
   );
