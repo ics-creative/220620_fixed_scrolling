@@ -10,7 +10,6 @@ modalOpenButton.addEventListener('click', () => {
   document.body.classList.add('is-scrollLock');
 })
 // 閉じるボタンまたはモーダルの背景がクリックされたらモーダルを閉じる
-// 閉じるボタンまたはモーダルの背景がクリックされたらモーダルを閉じる
 const closableElement = [modalCloseButton, modalOverlay];
 closableElement.forEach((element) => {
   element.addEventListener('click', () => {
