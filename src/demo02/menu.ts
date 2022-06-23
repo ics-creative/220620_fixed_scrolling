@@ -22,6 +22,8 @@ const close = () => {
   // ⭐スクロール固定のイベントを破棄
   document.removeEventListener('touchmove', scrollLock);
   scrollLockFixRemove(menuElement);
+  // ⭐フォーカス位置を戻す
+  menuButton.focus();
 }
 
 // ⭐キーボードフォーカスのイベントハンドラ
