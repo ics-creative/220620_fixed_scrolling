@@ -1,7 +1,6 @@
 import { CSS_CAN_SCROLL } from "./consts";
 
 const scrollLock = (event: Event) => {
-  console.log("scrollLock")
   const element = (event.target as HTMLElement);
   if (element === null) {
     return;
@@ -35,5 +34,5 @@ export const scrollLockFixRemove = (element: HTMLElement) => {
   if (!canScrollElement) {
     return;
   }
-  // canScrollElement.removeEventListener('scroll', scrollLock);
+  canScrollElement.removeEventListener('scroll', scrollLock);
 }

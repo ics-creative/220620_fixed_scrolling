@@ -61,7 +61,7 @@ export const modalFocus = (event: KeyboardEvent, parentElement: HTMLElement, onC
 
       if (focusIndex === 0) {
         if (event.shiftKey) {
-          console.log("モーダル画面以外にフォーカスが当たっていたらイベントを無効化")
+          console.log("モーダル画面以外にフォーカスが当たっていたらイベントを無効化");
           event.preventDefault();
           event.stopImmediatePropagation();
 
@@ -70,14 +70,14 @@ export const modalFocus = (event: KeyboardEvent, parentElement: HTMLElement, onC
       } else if (focusIndex >= interactiveElArray.length - 1) {
         // 最後の要素にふれていたら1番目の要素にフォーカスをあてる
         if (!event.shiftKey) {
-          console.log("最後の要素にふれていたら1番目の要素にフォーカスをあてる")
+          console.log("最後の要素にふれていたら1番目の要素にフォーカスをあてる");
           event.preventDefault();
           event.stopImmediatePropagation();
 
           focusToButton(parentElement, true);
         }
       } else if (focusIndex === -1) {
-        console.log("画面外の要素にフォーカスがあたっていたら1番目の要素にフォーカスをあてる")
+        console.log("画面外の要素にフォーカスがあたっていたら1番目の要素にフォーカスをあてる");
         focusToButton(parentElement, true);
       }
       break;

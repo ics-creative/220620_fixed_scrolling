@@ -5,7 +5,6 @@ const modalContent = document.querySelector<HTMLDivElement>('#js-modal')!
 
 // 開くボタンがクリックされたらモーダルを開く
 modalOpenButton.addEventListener('click', () => {
-  console.log('モーダルを表示')
   modalContent.classList.add('is-show');
   document.body.classList.add('is-scrollLock');
 })
@@ -13,7 +12,6 @@ modalOpenButton.addEventListener('click', () => {
 const closableElement = [modalCloseButton, modalOverlay];
 closableElement.forEach((element) => {
   element.addEventListener('click', () => {
-    console.log('モーダルを非表示')
     modalContent.classList.remove('is-show');
     document.body.classList.remove('is-scrollLock');
   })
