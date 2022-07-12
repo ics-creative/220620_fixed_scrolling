@@ -1,48 +1,30 @@
 import "./base.js";
-/* empty css       */const CSS_SHOW_DIALOG = "is-show-dialog";
-const CSS_SCROLL_LOCK = "is-fixed-scroll";
-const dialog = (element) => {
-  const show = (onShow) => {
-    console.log("\u30C0\u30A4\u30A2\u30ED\u30B0\u3092\u8868\u793A");
-    element.classList.add(CSS_SHOW_DIALOG);
-    document.body.classList.add(CSS_SCROLL_LOCK);
-    if (onShow) {
-      onShow();
-    }
-  };
-  const close = (onClose) => {
-    console.log("\u30C0\u30A4\u30A2\u30ED\u30B0\u3092\u975E\u8868\u793A");
-    element.classList.remove(CSS_SHOW_DIALOG);
-    document.body.classList.remove(CSS_SCROLL_LOCK);
-    if (onClose) {
-      onClose();
-    }
-  };
-  return {
-    show,
-    close
-  };
-};
-const menuElement = document.querySelector("#js-menu");
+/* empty css       */const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
-const menu = dialog(menuElement);
 menuButton.addEventListener("click", () => {
-  const isShow = menuElement.classList.contains("is-show-dialog");
+  const isShow = menuElement.classList.contains("is-show");
   if (!isShow) {
-    menu.show(() => {
-      menuButton.classList.add("is-active");
-    });
+    menuButton.classList.add("is-active");
+    menuElement.classList.add("is-show");
+    document.body.classList.add("is-scrollLock");
   } else {
-    menu.close(() => {
-      menuButton.classList.remove("is-active");
-    });
+    menuButton.classList.remove("is-active");
+    menuElement.classList.remove("is-show");
+    document.body.classList.remove("is-scrollLock");
   }
 });
 const modalOpenButton = document.querySelector("#js-modal-button");
 const modalCloseButton = document.querySelector("#js-modal-close");
 const modalOverlay = document.querySelector("#js-modal-overlay");
 const modalContent = document.querySelector("#js-modal");
-const modal = dialog(modalContent);
-modalOpenButton.addEventListener("click", () => modal.show());
-modalCloseButton.addEventListener("click", () => modal.close());
-modalOverlay.addEventListener("click", () => modal.close());
+modalOpenButton.addEventListener("click", () => {
+  modalContent.classList.add("is-show");
+  document.body.classList.add("is-scrollLock");
+});
+const closableElement = [modalCloseButton, modalOverlay];
+closableElement.forEach((element) => {
+  element.addEventListener("click", () => {
+    modalContent.classList.remove("is-show");
+    document.body.classList.remove("is-scrollLock");
+  });
+});

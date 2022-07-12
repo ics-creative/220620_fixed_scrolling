@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.menu.is-show-dialog .menu_content {
+.menu.is-show .menu_content {
   display: block;
 }/* modal */
 .modal {
@@ -89,7 +89,7 @@
   height: 100dvh;
   z-index: 200;
 }
-.modal.is-show-dialog {
+.modal.is-show {
   display: block;
 }
 .modal_overlay {

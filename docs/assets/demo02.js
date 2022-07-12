@@ -1,5 +1,49 @@
 import "./base.js";
-/* empty css       */const INTERACTIVE_SELECTOR = "button, a";
+/* empty css       */const CSS_CAN_SCROLL = "is-can-scroll";
+const scrollLock$1 = (event) => {
+  const element = event.target;
+  if (element === null) {
+    return;
+  }
+  if (element.scrollTop + element.clientHeight === element.scrollHeight) {
+    element.scrollTop = element.scrollTop - 1;
+  }
+  if (element.scrollTop === 0) {
+    element.scrollTop = 1;
+  }
+};
+const scrollLockFix = (element) => {
+  const canScrollElement = element.querySelector(`.${CSS_CAN_SCROLL}`);
+  if (!canScrollElement) {
+    return;
+  }
+  canScrollElement.addEventListener("scroll", scrollLock$1);
+};
+const scrollLockFixRemove = (element) => {
+  const canScrollElement = element.querySelector(`.${CSS_CAN_SCROLL}`);
+  if (!canScrollElement) {
+    return;
+  }
+  canScrollElement.removeEventListener("scroll", scrollLock$1);
+};
+const isScrollable = (element) => element.clientHeight < element.scrollHeight;
+const scrollLock = (event) => {
+  var _a;
+  const canScrollElement = (_a = event.target) == null ? void 0 : _a.closest(`.${CSS_CAN_SCROLL}`);
+  if (canScrollElement === null) {
+    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u3067\u306A\u3051\u308C\u3070\u30B9\u30AF\u30ED\u30FC\u30EB\u7981\u6B62");
+    event.preventDefault();
+    return;
+  }
+  if (canScrollElement && isScrollable(canScrollElement)) {
+    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
+    event.stopPropagation();
+  } else {
+    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u306F\u30B9\u30AF\u30ED\u30FC\u30EB\u7981\u6B62");
+    event.preventDefault();
+  }
+};
+const INTERACTIVE_SELECTOR = "button, a";
 const createInteractiveElArray = (element) => {
   const elements = element.querySelectorAll(INTERACTIVE_SELECTOR);
   const interactiveElArray = Array.from(elements);
@@ -11,12 +55,11 @@ const focusToButton = (parentElement, isFirstFocus) => {
   }
   const focusableArray = createInteractiveElArray(parentElement);
   if (focusableArray.length > 0) {
-    console.log(focusableArray[isFirstFocus ? 0 : focusableArray.length - 1]);
     focusableArray[isFirstFocus ? 0 : focusableArray.length - 1].focus();
   }
   focusableArray[0].focus();
 };
-const dialogFocusHandler = (event, parentElement, onEscape) => {
+const modalFocus = (event, parentElement, onClose) => {
   if (!parentElement) {
     return;
   }
@@ -25,9 +68,7 @@ const dialogFocusHandler = (event, parentElement, onEscape) => {
     case "Space":
       break;
     case "Escape":
-      if (onEscape) {
-        onEscape();
-      }
+      onClose();
       break;
     case "Tab": {
       const interactiveElArray = createInteractiveElArray(parentElement);
@@ -61,104 +102,65 @@ const dialogFocusHandler = (event, parentElement, onEscape) => {
     }
   }
 };
-const CSS_CAN_SCROLL = "is-can-scroll";
-const scrollLock = (event) => {
-  const element = event.target;
-  if (element === null) {
-    return;
-  }
-  if (element.scrollTop + element.clientHeight === element.scrollHeight) {
-    element.scrollTop = element.scrollTop - 1;
-  }
-  if (element.scrollTop === 0) {
-    element.scrollTop = 1;
-  }
-};
-const windowScrollLockFix = (element) => {
-  const canScrollElement = element.querySelector(`.${CSS_CAN_SCROLL}`);
-  if (canScrollElement === null) {
-    return;
-  }
-  if (canScrollElement) {
-    canScrollElement.addEventListener("scroll", scrollLock);
-  }
-};
-const isScrollable = (element) => element.clientHeight < element.scrollHeight;
-const windowScrollLock = (event) => {
-  var _a;
-  const canScrollElement = (_a = event.target) == null ? void 0 : _a.closest(`.${CSS_CAN_SCROLL}`);
-  if (canScrollElement === null) {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u3001\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
-    event.preventDefault();
-    return;
-  }
-  if (canScrollElement && isScrollable(canScrollElement)) {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u3001\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
-    event.stopPropagation();
-  } else {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u306F\u30B9\u30AF\u30ED\u30FC\u30EB\u7981\u6B62");
-    event.preventDefault();
-  }
-};
-const CSS_SHOW_DIALOG = "is-show-dialog";
-const CSS_SCROLL_LOCK = "is-fixed-scroll";
-const dialog = (element) => {
-  const closeHandler = (element2) => {
-    element2.classList.remove(CSS_SHOW_DIALOG);
-    document.body.classList.remove(CSS_SCROLL_LOCK);
-    window.removeEventListener("keydown", focusHandler, { capture: true });
-    document.removeEventListener("touchmove", windowScrollLock);
-  };
-  const focusHandler = (event) => dialogFocusHandler(event, element, () => closeHandler(element));
-  const show = (onShow) => {
-    console.log("\u30C0\u30A4\u30A2\u30ED\u30B0\u3092\u8868\u793A");
-    element.classList.add(CSS_SHOW_DIALOG);
-    document.body.classList.add(CSS_SCROLL_LOCK);
-    window.addEventListener("keydown", focusHandler, { capture: true });
-    windowScrollLockFix(element);
-    document.addEventListener("touchmove", windowScrollLock, { passive: false });
-    if (onShow) {
-      onShow();
-    }
-  };
-  const close = (onClose) => {
-    console.log("\u30C0\u30A4\u30A2\u30ED\u30B0\u3092\u975E\u8868\u793A");
-    closeHandler(element);
-    if (onClose) {
-      onClose();
-    }
-  };
-  return {
-    show,
-    close
-  };
-};
 const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
-const menu = dialog(menuElement);
+const close$1 = () => {
+  menuButton.classList.remove("is-active");
+  menuElement.classList.remove("is-show");
+  document.body.classList.remove("is-scrollLock");
+  menuElement.removeAttribute("role");
+  menuElement.removeAttribute("aria-modal");
+  menuButton.classList.remove("is-active");
+  menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F");
+  window.removeEventListener("keydown", focusHandle$1, { capture: true });
+  document.removeEventListener("touchmove", scrollLock);
+  scrollLockFixRemove(menuElement);
+  menuButton.focus();
+};
+const focusHandle$1 = (event) => modalFocus(event, menuElement, close$1);
 menuButton.addEventListener("click", () => {
-  const isShow = menuElement.classList.contains("is-show-dialog");
+  const isShow = menuElement.classList.contains("is-show");
   if (!isShow) {
-    menu.show(() => {
-      menuElement.setAttribute("role", "dialog");
-      menuElement.setAttribute("aria-modal", "true");
-      menuButton.classList.add("is-active");
-      menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B");
-    });
+    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
+    menuButton.classList.add("is-active");
+    menuElement.classList.add("is-show");
+    document.body.classList.add("is-scrollLock");
+    menuElement.setAttribute("role", "dialog");
+    menuElement.setAttribute("aria-modal", "true");
+    menuButton.classList.add("is-active");
+    menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B");
+    window.addEventListener("keydown", focusHandle$1, { capture: true });
+    document.addEventListener("touchmove", scrollLock, { passive: false });
+    scrollLockFix(menuElement);
   } else {
-    menu.close(() => {
-      menuElement.removeAttribute("role");
-      menuElement.removeAttribute("aria-modal");
-      menuButton.classList.remove("is-active");
-      menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F");
-    });
+    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u975E\u8868\u793A");
+    close$1();
   }
 });
 const modalOpenButton = document.querySelector("#js-modal-button");
 const modalCloseButton = document.querySelector("#js-modal-close");
 const modalOverlay = document.querySelector("#js-modal-overlay");
 const modalContent = document.querySelector("#js-modal");
-const modal = dialog(modalContent);
-modalOpenButton.addEventListener("click", () => modal.show());
-modalCloseButton.addEventListener("click", () => modal.close());
-modalOverlay.addEventListener("click", () => modal.close());
+const close = () => {
+  modalContent.classList.remove("is-show");
+  document.body.classList.remove("is-scrollLock");
+  window.removeEventListener("keydown", focusHandle, { capture: true });
+  document.removeEventListener("touchmove", scrollLock);
+  modalOpenButton.focus();
+};
+const focusHandle = (event) => modalFocus(event, modalContent, close);
+modalOpenButton.addEventListener("click", () => {
+  console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
+  modalContent.classList.add("is-show");
+  document.body.classList.add("is-scrollLock");
+  window.addEventListener("keydown", focusHandle, { capture: true });
+  scrollLockFix(modalContent);
+  document.addEventListener("touchmove", scrollLock, { passive: false });
+});
+const closableElement = [modalCloseButton, modalOverlay];
+closableElement.forEach((element) => {
+  element.addEventListener("click", () => {
+    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u975E\u8868\u793A");
+    close();
+  });
+});

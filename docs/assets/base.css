@@ -33,7 +33,7 @@ body {
   color: #333;
   background: #bec7d0;
 }
-body.is-fixed-scroll {
+body.is-scrollLock {
   overflow: hidden;
 }
 body.red {
