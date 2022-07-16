@@ -14,7 +14,7 @@ const createInteractiveElArray = (element: HTMLElement) => {
  * @param parentElement 対象の親要素
  * @param isFirstFocus 先頭と末尾のどちらにフォーカスを与えるか指定します。
  */
-const focusToButton = (parentElement: HTMLElement, isFirstFocus = true) => {
+export const focusToButton = (parentElement: HTMLElement, isFirstFocus = true) => {
   if (!parentElement) {
     throw new Error('要素が見つかりませんでした');
   }
