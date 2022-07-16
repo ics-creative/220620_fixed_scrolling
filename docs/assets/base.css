@@ -121,6 +121,9 @@ body.red {
   display: block;
   background: #a1b3be;
   border-radius: 3px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .dummyText__red {
   background: #bea1a1;

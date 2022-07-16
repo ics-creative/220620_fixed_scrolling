@@ -49,7 +49,7 @@ const createInteractiveElArray = (element) => {
   const interactiveElArray = Array.from(elements);
   return interactiveElArray;
 };
-const focusToButton = (parentElement, isFirstFocus) => {
+const focusToButton = (parentElement, isFirstFocus = true) => {
   if (!parentElement) {
     throw new Error("\u8981\u7D20\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F");
   }
@@ -102,16 +102,20 @@ const modalFocus = (event, parentElement, onClose) => {
     }
   }
 };
+const header$1 = document.querySelector("#js-header");
+const wrapper$1 = document.querySelector("#js-wrapper");
+const footer$1 = document.querySelector("#js-footer");
+const hiddenElements$1 = [header$1, wrapper$1, footer$1];
 const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
 const close$1 = () => {
   menuButton.classList.remove("is-active");
   menuElement.classList.remove("is-show");
-  document.body.classList.remove("is-scrollLock");
-  menuElement.removeAttribute("role");
-  menuElement.removeAttribute("aria-modal");
   menuButton.classList.remove("is-active");
+  document.body.classList.remove("is-scrollLock");
+  hiddenElements$1.forEach((element) => element.removeAttribute("aria-hidden"));
   menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F");
+  menuButton.setAttribute("aria-expanded", "false");
   window.removeEventListener("keydown", focusHandle$1, { capture: true });
   document.removeEventListener("touchmove", scrollLock);
   scrollLockFixRemove(menuElement);
@@ -124,11 +128,11 @@ menuButton.addEventListener("click", () => {
     console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
     menuButton.classList.add("is-active");
     menuElement.classList.add("is-show");
-    document.body.classList.add("is-scrollLock");
-    menuElement.setAttribute("role", "dialog");
-    menuElement.setAttribute("aria-modal", "true");
     menuButton.classList.add("is-active");
+    document.body.classList.add("is-scrollLock");
+    hiddenElements$1.forEach((element) => element.setAttribute("aria-hidden", "true"));
     menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B");
+    menuButton.setAttribute("aria-expanded", "true");
     window.addEventListener("keydown", focusHandle$1, { capture: true });
     document.addEventListener("touchmove", scrollLock, { passive: false });
     scrollLockFix(menuElement);
@@ -137,25 +141,33 @@ menuButton.addEventListener("click", () => {
     close$1();
   }
 });
+const header = document.querySelector("#js-header");
+const menu = document.querySelector("#js-menu");
+const wrapper = document.querySelector("#js-wrapper");
+const footer = document.querySelector("#js-footer");
+const hiddenElements = [header, menu, wrapper, footer];
+const modal = document.querySelector("#js-modal");
 const modalOpenButton = document.querySelector("#js-modal-button");
 const modalCloseButton = document.querySelector("#js-modal-close");
 const modalOverlay = document.querySelector("#js-modal-overlay");
-const modalContent = document.querySelector("#js-modal");
 const close = () => {
-  modalContent.classList.remove("is-show");
+  modal.classList.remove("is-show");
   document.body.classList.remove("is-scrollLock");
+  hiddenElements.forEach((element) => element.removeAttribute("aria-hidden"));
   window.removeEventListener("keydown", focusHandle, { capture: true });
   document.removeEventListener("touchmove", scrollLock);
   modalOpenButton.focus();
 };
-const focusHandle = (event) => modalFocus(event, modalContent, close);
+const focusHandle = (event) => modalFocus(event, modal, close);
 modalOpenButton.addEventListener("click", () => {
   console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
-  modalContent.classList.add("is-show");
+  modal.classList.add("is-show");
   document.body.classList.add("is-scrollLock");
+  hiddenElements.forEach((element) => element.setAttribute("aria-hidden", "true"));
   window.addEventListener("keydown", focusHandle, { capture: true });
-  scrollLockFix(modalContent);
+  scrollLockFix(modal);
   document.addEventListener("touchmove", scrollLock, { passive: false });
+  focusToButton(modal);
 });
 const closableElement = [modalCloseButton, modalOverlay];
 closableElement.forEach((element) => {

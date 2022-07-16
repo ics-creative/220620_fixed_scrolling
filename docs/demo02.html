@@ -14,14 +14,14 @@
   <link rel="stylesheet" href="./assets/modal.css">
 </head>
 <body>
-<div class="header">
+<div id="js-header" class="header">
   <div class="header_wrapper">
     <a class="header_heading" href="#">LOGO</a>
   </div>
 </div>
 
 <div id="js-menu" class="menu">
-  <button id="js-menu-button" class="menu_button" aria-label="メニューを開く">
+  <button id="js-menu-button" class="menu_button" aria-label="メニューを開く" aria-expanded="false" aria-controls="js-menu-content" type="button">
     <span class="menu_button_line"></span>
     <span class="menu_button_line"></span>
     <span class="menu_button_line"></span>
@@ -55,9 +55,9 @@
   <!-- /非表示のコンテンツ -->
 </div>
 
-<div class="wrapper">
+<div id="js-wrapper" class="wrapper">
   <h1>DEMO_02: スクロールの制御と、キーボードフォーカスを制御したサンプル</h1>
-  <button id="js-modal-button" class="button">モーダルを開く</button>
+  <button id="js-modal-button" class="button" type="button">モーダルを開く</button>
 
   <section class="dummySection">
     <p class="dummyText dummyText__verticalLarge"></p>
@@ -98,7 +98,7 @@
   </section>
 </div>
 
-<div class="footer">
+<div id="js-footer" class="footer">
   <ul class="footer_link">
     <li class="footer_link_item">
       <a href="#">ページ上部へ移動</a>
@@ -110,15 +110,15 @@
 </div>
 
 <!-- 非表示のコンテンツ -->
-<div id="js-modal" class="modal" role="dialog" aria-modal="true">
+<div id="js-modal" class="modal">
   <div id="js-modal-overlay" class="modal_overlay"></div>
-  <div class="modal_content">
+  <div role="dialog" id="js-modal-content" class="modal_content" aria-labelledby="modal-label" aria-describedby="modal-desc">
     <div class="modal_content_text is-can-scroll">
-      <p class="dummyText dummyText__verticalLarge"></p>
-      <p class="dummyText"></p>
+      <p id="modal-label" class="dummyText dummyText__verticalLarge">ダミーのタイトルです</p>
+      <p id="modal-desc" class="dummyText">ダミーのテキストです</p>
       <p class="dummyText"></p>
       <p class="dummyText dummyText__narrow"></p>
-      <button id="js-modal-close" class="button">モーダルを閉じる</button>
+      <button id="js-modal-close" class="button" type="button">モーダルを閉じる</button>
     </div>
   </div>
 </div>
