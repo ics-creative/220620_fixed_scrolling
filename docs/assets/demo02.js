@@ -1,5 +1,6 @@
 import "./base.js";
-/* empty css       */const CSS_CAN_SCROLL = "is-can-scroll";
+/* empty css      */
+const CSS_CAN_SCROLL = "is-can-scroll";
 const scrollLock$1 = (event) => {
   const element = event.target;
   if (element === null) {
@@ -28,18 +29,21 @@ const scrollLockFixRemove = (element) => {
 };
 const isScrollable = (element) => element.clientHeight < element.scrollHeight;
 const scrollLock = (event) => {
-  var _a;
-  const canScrollElement = (_a = event.target) == null ? void 0 : _a.closest(`.${CSS_CAN_SCROLL}`);
+  const canScrollElement = event.target?.closest(
+    `.${CSS_CAN_SCROLL}`
+  );
   if (canScrollElement === null) {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u3067\u306A\u3051\u308C\u3070\u30B9\u30AF\u30ED\u30FC\u30EB\u7981\u6B62");
+    console.log("対象の要素でなければスクロール禁止");
     event.preventDefault();
     return;
   }
   if (canScrollElement && isScrollable(canScrollElement)) {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u304C\u3042\u308A\u3001\u305D\u306E\u8981\u7D20\u304C\u30B9\u30AF\u30ED\u30FC\u30EB\u53EF\u80FD\u3067\u3042\u308C\u3070\u30B9\u30AF\u30ED\u30FC\u30EB\u3092\u8A31\u53EF\u3059\u308B");
+    console.log(
+      "対象の要素があり、その要素がスクロール可能であればスクロールを許可する"
+    );
     event.stopPropagation();
   } else {
-    console.log("\u5BFE\u8C61\u306E\u8981\u7D20\u306F\u30B9\u30AF\u30ED\u30FC\u30EB\u7981\u6B62");
+    console.log("対象の要素はスクロール禁止");
     event.preventDefault();
   }
 };
@@ -51,7 +55,7 @@ const createInteractiveElArray = (element) => {
 };
 const focusToButton = (parentElement, isFirstFocus = true) => {
   if (!parentElement) {
-    throw new Error("\u8981\u7D20\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3067\u3057\u305F");
+    throw new Error("要素が見つかりませんでした");
   }
   const focusableArray = createInteractiveElArray(parentElement);
   if (focusableArray.length > 0) {
@@ -72,9 +76,13 @@ const modalFocus = (event, parentElement, onClose) => {
       break;
     case "Tab": {
       const interactiveElArray = createInteractiveElArray(parentElement);
-      const focusIndex = interactiveElArray.findIndex((el) => el === document.activeElement);
+      const focusIndex = interactiveElArray.findIndex(
+        (el) => el === document.activeElement
+      );
       if (interactiveElArray.length === 1) {
-        console.log("\u30D5\u30A9\u30FC\u30AB\u30B9\u53EF\u80FD\u306A\u8981\u7D20\u304C1\u3064\u3057\u304B\u306A\u3044\u5834\u5408\u3001\u305D\u306E\u8981\u7D20\u306E\u307F\u30D5\u30A9\u30FC\u30AB\u30B9");
+        console.log(
+          "フォーカス可能な要素が1つしかない場合、その要素のみフォーカス"
+        );
         event.preventDefault();
         event.stopImmediatePropagation();
         focusToButton(parentElement, true);
@@ -82,20 +90,26 @@ const modalFocus = (event, parentElement, onClose) => {
       }
       if (focusIndex === 0) {
         if (event.shiftKey) {
-          console.log("\u30E2\u30FC\u30C0\u30EB\u753B\u9762\u4EE5\u5916\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u5F53\u305F\u3063\u3066\u3044\u305F\u3089\u30A4\u30D9\u30F3\u30C8\u3092\u7121\u52B9\u5316");
+          console.log(
+            "モーダル画面以外にフォーカスが当たっていたらイベントを無効化"
+          );
           event.preventDefault();
           event.stopImmediatePropagation();
           focusToButton(parentElement, false);
         }
       } else if (focusIndex >= interactiveElArray.length - 1) {
         if (!event.shiftKey) {
-          console.log("\u6700\u5F8C\u306E\u8981\u7D20\u306B\u3075\u308C\u3066\u3044\u305F\u30891\u756A\u76EE\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u3042\u3066\u308B");
+          console.log(
+            "最後の要素にふれていたら1番目の要素にフォーカスをあてる"
+          );
           event.preventDefault();
           event.stopImmediatePropagation();
           focusToButton(parentElement, true);
         }
       } else if (focusIndex === -1) {
-        console.log("\u753B\u9762\u5916\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u305F\u3063\u3066\u3044\u305F\u30891\u756A\u76EE\u306E\u8981\u7D20\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u3042\u3066\u308B");
+        console.log(
+          "画面外の要素にフォーカスがあたっていたら1番目の要素にフォーカスをあてる"
+        );
         focusToButton(parentElement, true);
       }
       break;
@@ -114,7 +128,7 @@ const close$1 = () => {
   menuButton.classList.remove("is-active");
   document.body.classList.remove("is-scrollLock");
   hiddenElements$1.forEach((element) => element.removeAttribute("aria-hidden"));
-  menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u958B\u304F");
+  menuButton.setAttribute("aria-label", "メニューを開く");
   menuButton.setAttribute("aria-expanded", "false");
   window.removeEventListener("keydown", focusHandle$1, { capture: true });
   document.removeEventListener("touchmove", scrollLock);
@@ -125,19 +139,21 @@ const focusHandle$1 = (event) => modalFocus(event, menuElement, close$1);
 menuButton.addEventListener("click", () => {
   const isShow = menuElement.classList.contains("is-show");
   if (!isShow) {
-    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
+    console.log("モーダルを表示");
     menuButton.classList.add("is-active");
     menuElement.classList.add("is-show");
     menuButton.classList.add("is-active");
     document.body.classList.add("is-scrollLock");
-    hiddenElements$1.forEach((element) => element.setAttribute("aria-hidden", "true"));
-    menuButton.setAttribute("aria-label", "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B");
+    hiddenElements$1.forEach(
+      (element) => element.setAttribute("aria-hidden", "true")
+    );
+    menuButton.setAttribute("aria-label", "メニューを閉じる");
     menuButton.setAttribute("aria-expanded", "true");
     window.addEventListener("keydown", focusHandle$1, { capture: true });
     document.addEventListener("touchmove", scrollLock, { passive: false });
     scrollLockFix(menuElement);
   } else {
-    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u975E\u8868\u793A");
+    console.log("モーダルを非表示");
     close$1();
   }
 });
@@ -160,10 +176,12 @@ const close = () => {
 };
 const focusHandle = (event) => modalFocus(event, modal, close);
 modalOpenButton.addEventListener("click", () => {
-  console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u8868\u793A");
+  console.log("モーダルを表示");
   modal.classList.add("is-show");
   document.body.classList.add("is-scrollLock");
-  hiddenElements.forEach((element) => element.setAttribute("aria-hidden", "true"));
+  hiddenElements.forEach(
+    (element) => element.setAttribute("aria-hidden", "true")
+  );
   window.addEventListener("keydown", focusHandle, { capture: true });
   scrollLockFix(modal);
   document.addEventListener("touchmove", scrollLock, { passive: false });
@@ -172,7 +190,7 @@ modalOpenButton.addEventListener("click", () => {
 const closableElement = [modalCloseButton, modalOverlay];
 closableElement.forEach((element) => {
   element.addEventListener("click", () => {
-    console.log("\u30E2\u30FC\u30C0\u30EB\u3092\u975E\u8868\u793A");
+    console.log("モーダルを非表示");
     close();
   });
 });

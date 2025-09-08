@@ -7,12 +7,37 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
   border-radius: 16px;
   border: 0;
   padding: 24px;
 
+  --duration: 0.3s;
+  --scale: 0.6;
+
+  opacity: 0;
+  scale: var(--scale);
+  transition: all var(--duration) allow-discrete;
+
+  &[open] {
+    opacity: 1;
+    scale: 1;
+    @starting-style {
+      opacity: 0;
+      scale: var(--scale);
+    }
+  }
+
   &::backdrop {
     background-color: rgb(43 62 80 / 0.64);
+    opacity: 0;
+    transition: all var(--duration) allow-discrete;
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
+    }
   }
 }

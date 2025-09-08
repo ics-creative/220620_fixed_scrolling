@@ -1,5 +1,6 @@
 import "./base.js";
-/* empty css       */const menuElement = document.querySelector("#js-menu");
+/* empty css      */
+const menuElement = document.querySelector("#js-menu");
 const menuButton = document.querySelector("#js-menu-button");
 menuButton.addEventListener("click", () => {
   const isShow = menuElement.classList.contains("is-show");
