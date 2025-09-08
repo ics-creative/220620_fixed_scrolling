@@ -1,1 +1,1 @@
-export const CSS_CAN_SCROLL = 'is-can-scroll';
+export const CSS_CAN_SCROLL = "is-can-scroll";

@@ -1,7 +1,7 @@
 import { CSS_CAN_SCROLL } from "./consts";
 
 const scrollLock = (event: Event) => {
-  const element = (event.target as HTMLElement);
+  const element = event.target as HTMLElement;
   if (element === null) {
     return;
   }
@@ -14,7 +14,7 @@ const scrollLock = (event: Event) => {
   if (element.scrollTop === 0) {
     element.scrollTop = 1;
   }
-}
+};
 
 /**
  * スクロールのバグ対策を行うイベントを追加します。
@@ -24,8 +24,8 @@ export const scrollLockFix = (element: HTMLElement) => {
   if (!canScrollElement) {
     return;
   }
-  canScrollElement.addEventListener('scroll', scrollLock);
-}
+  canScrollElement.addEventListener("scroll", scrollLock);
+};
 /**
  * スクロールのバグ対策を行うイベントを削除します。
  */
@@ -34,5 +34,5 @@ export const scrollLockFixRemove = (element: HTMLElement) => {
   if (!canScrollElement) {
     return;
   }
-  canScrollElement.removeEventListener('scroll', scrollLock);
-}
+  canScrollElement.removeEventListener("scroll", scrollLock);
+};

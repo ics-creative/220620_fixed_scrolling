@@ -1,8 +1,10 @@
-const dialogElement = document.querySelector<HTMLDialogElement>('#js-dialog')!
-const dialogOpenButton = document.querySelector<HTMLButtonElement>('#js-dialog-open')!
-const dialogCloseButton = document.querySelector<HTMLButtonElement>('#js-dialog-close')!
+const dialogElement = document.querySelector<HTMLDialogElement>("#js-dialog")!;
+const dialogOpenButton =
+  document.querySelector<HTMLButtonElement>("#js-dialog-open")!;
+const dialogCloseButton =
+  document.querySelector<HTMLButtonElement>("#js-dialog-close")!;
 
-dialogOpenButton.addEventListener('click', () => {
+dialogOpenButton.addEventListener("click", () => {
   if (typeof dialogElement.showModal === "function") {
     dialogElement.showModal();
   } else {
@@ -10,6 +12,6 @@ dialogOpenButton.addEventListener('click', () => {
   }
 });
 
-dialogCloseButton.addEventListener('click', () => {
+dialogCloseButton.addEventListener("click", () => {
   dialogElement.close();
 });

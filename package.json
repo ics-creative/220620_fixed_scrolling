@@ -6,8 +6,7 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "stylelint  'src/**/*.{css,scss,ts,js,html}'",
-    "fix": "stylelint --fix 'src/**/*.{css,scss,ts,js,html}'"
+    "fix": "stylelint --fix 'src/**/*.*' && prettier --write 'src/**/*.*'"
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",

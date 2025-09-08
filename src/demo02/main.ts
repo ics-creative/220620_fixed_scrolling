@@ -1,2 +1,2 @@
-import './menu'
-import './modal'
+import "./menu";
+import "./modal";
